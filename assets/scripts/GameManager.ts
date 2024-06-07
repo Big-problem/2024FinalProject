@@ -53,6 +53,9 @@ export default class GameManager extends cc.Component {
     @property(cc.AudioClip)
     waiting_bgm: cc.AudioClip = null;
 
+    @property(cc.Node)
+    camera: cc.Node = null;
+
     user = null;
     roomId = null;
     rivalId = null;
@@ -158,7 +161,11 @@ export default class GameManager extends cc.Component {
                         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP);
                         // stop bgm
                         cc.audioEngine.stopMusic();
-                        cc.director.loadScene('Lose');
+                        this.camera.x = 760;
+                        this.base.getComponent(cc.Animation).play('explode');
+                        this.scheduleOnce(() => {
+                            cc.director.loadScene('Lose');
+                        }, 3);
                     }, ((time+300)-Date.now())/1000)
                 }
                 else if(index === -100000){
@@ -170,7 +177,11 @@ export default class GameManager extends cc.Component {
                         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP);
                         // stop bgm
                         cc.audioEngine.stopMusic();
-                        cc.director.loadScene('win');
+                        this.camera.x = -750;
+                        this.enemy_base.getComponent(cc.Animation).play('explode');
+                        this.scheduleOnce(() => {
+                            cc.director.loadScene('win');
+                        }, 3);
                     }, ((time+300)-Date.now())/1000)
                 }
                 else if(index > 0) {
@@ -293,7 +304,13 @@ export default class GameManager extends cc.Component {
                         this.gameOver = true;
                         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN);
                         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP);
-                        cc.director.loadScene('win');
+                        // stop bgm
+                        cc.audioEngine.stopMusic();
+                        this.camera.x = -750;
+                        this.enemy_base.getComponent(cc.Animation).play('explode');
+                        this.scheduleOnce(() => {
+                            cc.director.loadScene('win');
+                        }, 3);
                     }, ((time+300)-Date.now())/1000)
                 }
                 else if(index === -100000){
@@ -304,7 +321,11 @@ export default class GameManager extends cc.Component {
                         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP);
                         // stop bgm
                         cc.audioEngine.stopMusic();
-                        cc.director.loadScene('Lose');
+                        this.camera.x = 760;
+                        this.base.getComponent(cc.Animation).play('explode');
+                        this.scheduleOnce(() => {
+                            cc.director.loadScene('Lose');
+                        }, 3);
                     }, ((time+300)-Date.now())/1000)
                 } 
                 else if(index > 0) {
