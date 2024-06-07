@@ -16,6 +16,7 @@ export default class Menu extends cc.Component {
         // if there is no bgm playing, play bgm
         cc.audioEngine.playMusic(this.bgm, true);
 
+        this.open_ranking();
     }
 
     // update (dt) {}
@@ -81,5 +82,27 @@ export default class Menu extends cc.Component {
         // }).catch((error) => {
         //     console.error("Error reading database:", error);
         // })
+    }
+
+    async open_ranking() {
+        
+        const ranking = [];
+        await firebase.database().ref('Users/').once('value').then(async(snapshot) => {
+            if(snapshot){
+                let datas = snapshot.val();
+                if(datas){ 
+                    Object.entries(datas).forEach(([key, value]: [any, any]) => {
+                        ranking.push({
+                            name: value.username,
+                            win_num: value.win_num
+                        })
+                    })
+                    // console.debug(ranking);
+                    ranking.sort((a, b) => b.win_num - a.win_num);
+                    console.debug("Ranking: ", ranking);
+                }
+            }
+        })
+                // something.active = true;
     }
 }

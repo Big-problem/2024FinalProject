@@ -79,16 +79,13 @@ export default class LoginSignUp extends cc.Component {
             }
 
             // Save user info to database
-            // await firebase.database().ref('users/' + user.uid).set({
-            //     uid: result.user.uid,
-            //     username: userName,
-            //     email: email,
-            //     isLevel2: false,
-            //     L1Score: 0, 
-            //     L2Score: 0,
-            //     life: 5
-            // });
-            // stop music
+            await firebase.database().ref('Users/' + user.uid).set({
+                uid: result.user.uid,
+                username: userName,
+                email: email,
+                win_num: 0,
+            });
+
             cc.audioEngine.stopMusic();
             cc.director.loadScene('Menu');
                
