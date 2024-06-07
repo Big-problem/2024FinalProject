@@ -47,8 +47,9 @@ export default class GameManager extends cc.Component {
     rivalId = null;
     rivalName = null;
 
-    money: number = 100;
-    moneyUpdateSpeed: number = 10;
+    money: number = 0;
+    moneyLimitForEachLevel: number[] = [300, 400, 500, 600, 700];
+    moneyUpdateSpeed: number = 5;
 
     level: number = 1;
     maxLevel: number = 5;
@@ -58,6 +59,13 @@ export default class GameManager extends cc.Component {
 
     heavyBanditCost: number = 10;
     kunoichiCost: number = 20;
+
+    isHeavyBanditCoolDown: boolean = false;
+    isKunoichiCoolDown: boolean = false;
+    heavyBanditCoolDownTime: number = 0;
+    kunoichiCoolDownTime: number = 0;
+    heavyBanditCoolDownDuration: number = 2;
+    kunoichiCoolDownDuration: number = 4;
 
     gameStart: boolean = false;
     alliance_arr: cc.Node[] = [];
@@ -103,7 +111,7 @@ export default class GameManager extends cc.Component {
                 if(index === 100000){
                     this.scheduleOnce(() => {
                         const life_percent = id / this.base.getComponent(Info).default_life;
-                        this.base.children[0].getComponent(cc.Sprite).fillRange = life_percent;
+                        this.base.children[1].getComponent(cc.Sprite).fillRange = life_percent;
                         if (life_percent < 0.667 && life_percent > 0.333) {
                             this.base.getComponent(cc.Animation).play('little_fire');
                         }
@@ -117,7 +125,7 @@ export default class GameManager extends cc.Component {
                 else{
                     this.scheduleOnce(() => {
                         const life_percent = id / this.enemy_base.getComponent(Info).default_life;
-                        this.enemy_base.children[0].getComponent(cc.Sprite).fillRange = life_percent;
+                        this.enemy_base.children[1].getComponent(cc.Sprite).fillRange = life_percent;
                         if (life_percent < 0.667 && life_percent > 0.333) {
                             this.enemy_base.getComponent(cc.Animation).play('little_fire');
                         }
@@ -209,6 +217,12 @@ export default class GameManager extends cc.Component {
             cc.find('Canvas/Main Camera/heavyBanditBtn').active = true;
             cc.find('Canvas/Main Camera/kunoichiBtn').active = true;
             cc.find('Canvas/Main Camera/levelUpBtn').active = true;
+            cc.find('Canvas/Main Camera/Navbar').active = true;
+            cc.find('Canvas/Main Camera/level').active = true;
+            cc.find('Canvas/Main Camera/levelProgressBar').active = true;
+            cc.find('Canvas/Main Camera/levelProgressBarBg').active = true;
+            cc.find('Canvas/Main Camera/Coin').active = true;
+            cc.find('Canvas/Main Camera/coinCount').active = true;
             this.getComponent(KeyboardManager).enableKeyboard();
         }
     }
@@ -234,7 +248,7 @@ export default class GameManager extends cc.Component {
                     this.scheduleOnce(() => {
                         console.debug("CASTLE HURT");
                         const life_percent = id / this.base.getComponent(Info).default_life;
-                        this.base.children[0].getComponent(cc.Sprite).fillRange = life_percent;
+                        this.base.children[1].getComponent(cc.Sprite).fillRange = life_percent;
                         if (life_percent < 0.667 && life_percent > 0.333) {
                             this.base.getComponent(cc.Animation).play('little_fire');
                         }
@@ -248,7 +262,7 @@ export default class GameManager extends cc.Component {
                 else{
                     this.scheduleOnce(() => {
                         const life_percent = id / this.enemy_base.getComponent(Info).default_life;
-                        this.enemy_base.children[0].getComponent(cc.Sprite).fillRange = life_percent;
+                        this.enemy_base.children[1].getComponent(cc.Sprite).fillRange = life_percent;
                         if (life_percent < 0.667 && life_percent > 0.333) {
                             this.enemy_base.getComponent(cc.Animation).play('little_fire');
                         }
@@ -341,6 +355,12 @@ export default class GameManager extends cc.Component {
                cc.find('Canvas/Main Camera/heavyBanditBtn').active = true;
                 cc.find('Canvas/Main Camera/kunoichiBtn').active = true;
                 cc.find('Canvas/Main Camera/levelUpBtn').active = true;
+                cc.find('Canvas/Main Camera/Navbar').active = true;
+                cc.find('Canvas/Main Camera/level').active = true;
+                cc.find('Canvas/Main Camera/levelProgressBar').active = true;
+                cc.find('Canvas/Main Camera/levelProgressBarBg').active = true;
+                cc.find('Canvas/Main Camera/Coin').active = true;
+                cc.find('Canvas/Main Camera/coinCount').active = true;
                this.getComponent(KeyboardManager).enableKeyboard();
                firebase.database().ref('Rooms/' + this.roomId + '/' + this.rivalId).off('child_changed', gameStartListener)
             }        
@@ -431,9 +451,49 @@ export default class GameManager extends cc.Component {
         else {
             
             this.money += this.moneyUpdateSpeed * dt;
+            
+            if (this.isHeavyBanditCoolDown) {
+                this.heavyBanditCoolDownTime += dt;
+                cc.find('Canvas/Main Camera/heavyBanditBtn/Background/cdBar').getComponent(cc.Sprite).fillRange = this.heavyBanditCoolDownTime / this.heavyBanditCoolDownDuration;
+                if (this.heavyBanditCoolDownTime >= this.heavyBanditCoolDownDuration) {
+                    this.isHeavyBanditCoolDown = false;
+                    this.heavyBanditCoolDownTime = 0;
+                    this.HeavyBanditBtn.interactable = true;
+                    cc.find('Canvas/Main Camera/heavyBanditBtn/Background/cdBar').active = false;
+                    cc.find('Canvas/Main Camera/heavyBanditBtn/Background/cdBarBg').active = false;
+                }
+            }
 
-            this.HeavyBanditBtn.interactable = this.money >= this.heavyBanditCost;
-            this.KunoichiBtn.interactable = this.money >= this.kunoichiCost;
+            if (this.isKunoichiCoolDown) {
+                this.kunoichiCoolDownTime += dt;
+                cc.find('Canvas/Main Camera/kunoichiBtn/Background/cdBar').getComponent(cc.Sprite).fillRange = this.kunoichiCoolDownTime / this.kunoichiCoolDownDuration;
+                if (this.kunoichiCoolDownTime >= this.kunoichiCoolDownDuration) {
+                    this.isKunoichiCoolDown = false;
+                    this.kunoichiCoolDownTime = 0;
+                    this.KunoichiBtn.interactable = true;
+                    cc.find('Canvas/Main Camera/kunoichiBtn/Background/cdBar').active = false;
+                    cc.find('Canvas/Main Camera/kunoichiBtn/Background/cdBarBg').active = false;
+                }
+            }
+
+            if (this.money > this.moneyLimitForEachLevel[this.level - 1]) {
+                this.money = this.moneyLimitForEachLevel[this.level - 1];
+            }
+
+            let coinCount = String(this.money.toFixed(0)) + '/' + String(this.moneyLimitForEachLevel[this.level - 1]);
+            cc.find('Canvas/Main Camera/coinCount').getComponent(cc.Label).string = coinCount;
+
+            let heavyBanditCostString = "$" + String(this.heavyBanditCost);
+            cc.find('Canvas/Main Camera/heavyBanditBtn/Background/Label').getComponent(cc.Label).string = heavyBanditCostString;
+
+            let kunoichiCostString = "$" + String(this.kunoichiCost);
+            cc.find('Canvas/Main Camera/kunoichiBtn/Background/Label').getComponent(cc.Label).string = kunoichiCostString;
+
+            let expFillRange = this.currentExp / this.expNeedForEachLevel[this.level - 1];
+            cc.find('Canvas/Main Camera/levelProgressBar').getComponent(cc.Sprite).fillRange = expFillRange;
+
+            this.HeavyBanditBtn.interactable = this.money >= this.heavyBanditCost && !this.isHeavyBanditCoolDown;
+            this.KunoichiBtn.interactable = this.money >= this.kunoichiCost && !this.isKunoichiCoolDown;
             this.levelUpBtn.interactable = this.money >= this.costForExp;
 
             if(!this.invincible){
@@ -465,8 +525,7 @@ export default class GameManager extends cc.Component {
         if (this.currentExp >= this.expNeedForEachLevel[this.level - 1]) {
             this.currentExp -= this.expNeedForEachLevel[this.level - 1];
             this.level++;
-            this.costForExp += 10;
-            this.moneyUpdateSpeed += 10;
+            this.moneyUpdateSpeed += 1;
         }
         console.log('Level: ', this.level, ' Exp: ', this.currentExp, ' Cost: ', this.costForExp, ' Money: ', this.money, ' MoneyUpdateSpeed: ', this.moneyUpdateSpeed)
     }
@@ -494,9 +553,10 @@ export default class GameManager extends cc.Component {
         this.money -= this.heavyBanditCost;
 
         this.HeavyBanditBtn.interactable = false;
-        this.scheduleOnce(() => {
-            this.HeavyBanditBtn.interactable = true;
-        }, 0.5);        
+        this.isHeavyBanditCoolDown = true;
+        this.heavyBanditCoolDownTime = 0;
+        cc.find('Canvas/Main Camera/heavyBanditBtn/Background/cdBar').active = true;
+        cc.find('Canvas/Main Camera/heavyBanditBtn/Background/cdBarBg').active = true;
     }
 
     async clickKonoichiBtn() {
@@ -522,9 +582,10 @@ export default class GameManager extends cc.Component {
         this.money -= this.kunoichiCost;
 
         this.KunoichiBtn.interactable = false;
-        this.scheduleOnce(() => {
-            this.KunoichiBtn.interactable = true;
-        }, 1.5);        
+        this.isKunoichiCoolDown = true;
+        this.kunoichiCoolDownTime = 0;
+        cc.find('Canvas/Main Camera/kunoichiBtn/Background/cdBar').active = true;
+        cc.find('Canvas/Main Camera/kunoichiBtn/Background/cdBarBg').active = true;
     }
 
     HeavyBandit(index: number) {
