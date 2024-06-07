@@ -9,6 +9,8 @@ export default class Menu extends cc.Component {
     @property(cc.AudioClip)
     bgm: cc.AudioClip = null;
 
+
+
     user = null;
     start () {
         this.user = firebase.auth().currentUser;
@@ -17,6 +19,14 @@ export default class Menu extends cc.Component {
         cc.audioEngine.playMusic(this.bgm, true);
 
         this.open_ranking();
+    }
+
+    async clickRankingBtn() {
+        cc.find('ranking').active = true;
+    }
+
+    async closeRankingBtn() {
+        cc.find('ranking').active = false;
     }
 
     // update (dt) {}
