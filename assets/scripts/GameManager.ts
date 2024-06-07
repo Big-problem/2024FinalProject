@@ -18,6 +18,17 @@ export default class GameManager extends cc.Component {
     @property(cc.Prefab)
     kunoichi: cc.Prefab = null;
 
+    @property(cc.SpriteFrame)
+    level1Sprite: cc.SpriteFrame = null;
+    @property(cc.SpriteFrame)
+    level2Sprite: cc.SpriteFrame = null;
+    @property(cc.SpriteFrame)
+    level3Sprite: cc.SpriteFrame = null;
+    @property(cc.SpriteFrame)
+    level4Sprite: cc.SpriteFrame = null;
+    @property(cc.SpriteFrame)
+    level5Sprite: cc.SpriteFrame = null;
+
     @property(cc.Button)
     HeavyBanditBtn: cc.Button = null;
     @property(cc.Button)
@@ -217,6 +228,7 @@ export default class GameManager extends cc.Component {
             cc.find('Canvas/Main Camera/heavyBanditBtn').active = true;
             cc.find('Canvas/Main Camera/kunoichiBtn').active = true;
             cc.find('Canvas/Main Camera/levelUpBtn').active = true;
+            cc.find('Canvas/Main Camera/background').active = true;
             cc.find('Canvas/Main Camera/Navbar').active = true;
             cc.find('Canvas/Main Camera/level').active = true;
             cc.find('Canvas/Main Camera/levelProgressBar').active = true;
@@ -355,6 +367,7 @@ export default class GameManager extends cc.Component {
                cc.find('Canvas/Main Camera/heavyBanditBtn').active = true;
                 cc.find('Canvas/Main Camera/kunoichiBtn').active = true;
                 cc.find('Canvas/Main Camera/levelUpBtn').active = true;
+                cc.find('Canvas/Main Camera/background').active = true;
                 cc.find('Canvas/Main Camera/Navbar').active = true;
                 cc.find('Canvas/Main Camera/level').active = true;
                 cc.find('Canvas/Main Camera/levelProgressBar').active = true;
@@ -491,6 +504,24 @@ export default class GameManager extends cc.Component {
 
             let expFillRange = this.currentExp / this.expNeedForEachLevel[this.level - 1];
             cc.find('Canvas/Main Camera/levelProgressBar').getComponent(cc.Sprite).fillRange = expFillRange;
+
+            switch (this.level) {
+                case 1:
+                    cc.find('Canvas/Main Camera/level/New Sprite').getComponent(cc.Sprite).spriteFrame = this.level1Sprite;
+                    break;
+                case 2:
+                    cc.find('Canvas/Main Camera/level/New Sprite').getComponent(cc.Sprite).spriteFrame = this.level2Sprite;
+                    break;
+                case 3:
+                    cc.find('Canvas/Main Camera/level/New Sprite').getComponent(cc.Sprite).spriteFrame = this.level3Sprite;
+                    break;
+                case 4:
+                    cc.find('Canvas/Main Camera/level/New Sprite').getComponent(cc.Sprite).spriteFrame = this.level4Sprite;
+                    break;
+                case 5:
+                    cc.find('Canvas/Main Camera/level/New Sprite').getComponent(cc.Sprite).spriteFrame = this.level5Sprite;
+                    break;
+            }
 
             this.HeavyBanditBtn.interactable = this.money >= this.heavyBanditCost && !this.isHeavyBanditCoolDown;
             this.KunoichiBtn.interactable = this.money >= this.kunoichiCost && !this.isKunoichiCoolDown;
