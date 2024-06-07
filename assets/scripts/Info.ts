@@ -58,9 +58,7 @@ export default class Info extends cc.Component {
         this.life -= this.getDamage;
         let tmp = this.getDamage;
         this.getDamage = 0;
-        if(!this.is_base()) this.node.children[0].getComponent(cc.Label).string = this.life.toString();
-        else // castle
-        {
+        if (this.is_base()) {
             if(tmp){
                 await firebase.database().ref('Rooms/' + this.gameManager.roomId + '/' + this.gameManager.user.uid).push({
                     minion: this.life, // 這邊傳的是城堡剩餘血量
