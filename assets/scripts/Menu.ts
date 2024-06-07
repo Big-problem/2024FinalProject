@@ -103,6 +103,7 @@ export default class Menu extends cc.Component {
                 }
             }
         })
-                // something.active = true;
+        
+        // something.active = true;
     }
 }
