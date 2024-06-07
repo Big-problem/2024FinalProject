@@ -22,6 +22,8 @@ export default class GameManager extends cc.Component {
     HeavyBanditBtn: cc.Button = null;
     @property(cc.Button)
     KunoichiBtn: cc.Button = null;
+    @property(cc.Button)
+    levelUpBtn: cc.Button = null;
 
     @property(cc.Node)
     enemy_base:cc.Node=null;
@@ -46,7 +48,13 @@ export default class GameManager extends cc.Component {
     rivalName = null;
 
     money: number = 100;
-    moneyUpdateSpeed: number = 1;
+    moneyUpdateSpeed: number = 10;
+
+    level: number = 1;
+    maxLevel: number = 5;
+    expNeedForEachLevel: number[] = [100, 150, 200, 250, 300];
+    currentExp: number = 0;
+    costForExp: number = 10;
 
     heavyBanditCost: number = 10;
     kunoichiCost: number = 20;
@@ -198,8 +206,9 @@ export default class GameManager extends cc.Component {
             console.debug("listen1:",this.base,this.enemy_base);
             this.gameStart = true;
             cc.find('ColorBlack').active = false;
-            cc.find('Canvas/Main Camera/btn1').active = true;
-            cc.find('Canvas/Main Camera/btn4').active = true;
+            cc.find('Canvas/Main Camera/heavyBanditBtn').active = true;
+            cc.find('Canvas/Main Camera/kunoichiBtn').active = true;
+            cc.find('Canvas/Main Camera/levelUpBtn').active = true;
             this.getComponent(KeyboardManager).enableKeyboard();
         }
     }
@@ -329,8 +338,9 @@ export default class GameManager extends cc.Component {
                this.gameStart = true;
                console.debug("listen2:",this.base,this.enemy_base);        
                cc.find('ColorBlack').active = false;
-               cc.find('Canvas/Main Camera/btn1').active = true;
-               cc.find('Canvas/Main Camera/btn4').active = true;
+               cc.find('Canvas/Main Camera/heavyBanditBtn').active = true;
+                cc.find('Canvas/Main Camera/kunoichiBtn').active = true;
+                cc.find('Canvas/Main Camera/levelUpBtn').active = true;
                this.getComponent(KeyboardManager).enableKeyboard();
                firebase.database().ref('Rooms/' + this.roomId + '/' + this.rivalId).off('child_changed', gameStartListener)
             }        
@@ -415,6 +425,7 @@ export default class GameManager extends cc.Component {
         if(this.gameOver){
             this.HeavyBanditBtn.interactable = false;
             this.KunoichiBtn.interactable = false;
+            this.levelUpBtn.interactable = false;
             return;
         }
         else {
@@ -423,6 +434,7 @@ export default class GameManager extends cc.Component {
 
             this.HeavyBanditBtn.interactable = this.money >= this.heavyBanditCost;
             this.KunoichiBtn.interactable = this.money >= this.kunoichiCost;
+            this.levelUpBtn.interactable = this.money >= this.costForExp;
 
             if(!this.invincible){
                 for(let i of this.alliance_arr) {  // 實際打出傷害
@@ -443,6 +455,20 @@ export default class GameManager extends cc.Component {
         // stop bgm
         cc.audioEngine.stopMusic();
         cc.director.loadScene('Menu');
+    }
+
+    async clickLevelUpBtn() {
+        if (this.level >= this.maxLevel) return;
+        if (this.money < this.costForExp) return;
+        this.money -= this.costForExp;
+        this.currentExp += 20;
+        if (this.currentExp >= this.expNeedForEachLevel[this.level - 1]) {
+            this.currentExp -= this.expNeedForEachLevel[this.level - 1];
+            this.level++;
+            this.costForExp += 10;
+            this.moneyUpdateSpeed += 10;
+        }
+        console.log('Level: ', this.level, ' Exp: ', this.currentExp, ' Cost: ', this.costForExp, ' Money: ', this.money, ' MoneyUpdateSpeed: ', this.moneyUpdateSpeed)
     }
 
     async clickHeavyBanditBtn() {
