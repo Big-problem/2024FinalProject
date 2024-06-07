@@ -1294,7 +1294,9 @@
     "waiting_bgm": {
       "__uuid__": "b7c5efc7-fdae-45e7-afd7-9165b1bad93f"
     },
-    "camera": null,
+    "camera": {
+      "__id__": 7
+    },
     "_id": "ac/2R/LiJARb+5P3n0aXEW"
   },
   {
