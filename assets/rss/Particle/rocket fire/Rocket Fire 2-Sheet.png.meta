@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "ffa9628f-41b8-46d9-9bfa-897fc10250b0",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "point",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 750,
+  "height": 750,
+  "platformSettings": {},
+  "subMetas": {
+    "Rocket Fire 2-Sheet": {
+      "ver": "1.0.6",
+      "uuid": "611d1393-161b-4b26-9503-b4ec82ca0774",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "ffa9628f-41b8-46d9-9bfa-897fc10250b0",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -10,
+      "offsetY": -24.5,
+      "trimX": 50,
+      "trimY": 71,
+      "width": 630,
+      "height": 657,
+      "rawWidth": 750,
+      "rawHeight": 750,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
