@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "f551ea4c-6c56-466a-bf1d-daf500187751",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1792,
+  "height": 1024,
+  "platformSettings": {},
+  "subMetas": {
+    "Cottage Interior 1": {
+      "ver": "1.0.6",
+      "uuid": "f2e464fa-ee5c-4693-933d-7c7282aa2201",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "f551ea4c-6c56-466a-bf1d-daf500187751",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1792,
+      "height": 1024,
+      "rawWidth": 1792,
+      "rawHeight": 1024,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "f45a9ed7-a799-44bd-a086-40c15e4e1809",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1792,
+  "height": 1024,
+  "platformSettings": {},
+  "subMetas": {
+    "Castle Kitchen": {
+      "ver": "1.0.6",
+      "uuid": "79b85c46-c8a9-4dd7-bea2-15bf63114049",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "f45a9ed7-a799-44bd-a086-40c15e4e1809",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1792,
+      "height": 1024,
+      "rawWidth": 1792,
+      "rawHeight": 1024,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

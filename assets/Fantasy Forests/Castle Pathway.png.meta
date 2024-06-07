@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "ad105864-c5b6-43a2-a5d4-91776a9a2fb1",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1792,
+  "height": 1024,
+  "platformSettings": {},
+  "subMetas": {
+    "Castle Pathway": {
+      "ver": "1.0.6",
+      "uuid": "cd5826e4-fbd5-4088-bc4f-7e73fa36ee2e",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "ad105864-c5b6-43a2-a5d4-91776a9a2fb1",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1792,
+      "height": 1024,
+      "rawWidth": 1792,
+      "rawHeight": 1024,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

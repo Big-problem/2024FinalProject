@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "511dc06a-1586-44c9-b6b0-16de37847123",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1792,
+  "height": 1024,
+  "platformSettings": {},
+  "subMetas": {
+    "Waterlilies": {
+      "ver": "1.0.6",
+      "uuid": "4b8731da-1ee2-4f66-ac8b-9cebed4d45ea",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "511dc06a-1586-44c9-b6b0-16de37847123",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1792,
+      "height": 1024,
+      "rawWidth": 1792,
+      "rawHeight": 1024,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

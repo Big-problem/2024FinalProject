@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "d140cad0-f642-44ee-a994-8f01f498378d",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1792,
+  "height": 1024,
+  "platformSettings": {},
+  "subMetas": {
+    "Castle Road": {
+      "ver": "1.0.6",
+      "uuid": "cf871752-b760-4360-b742-608c26e531a8",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "d140cad0-f642-44ee-a994-8f01f498378d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1792,
+      "height": 1024,
+      "rawWidth": 1792,
+      "rawHeight": 1024,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

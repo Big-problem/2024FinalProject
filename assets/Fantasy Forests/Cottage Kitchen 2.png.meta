@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "5629d111-eda6-4f33-9821-9c8f8cdfd50d",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1792,
+  "height": 1024,
+  "platformSettings": {},
+  "subMetas": {
+    "Cottage Kitchen 2": {
+      "ver": "1.0.6",
+      "uuid": "09ea5d4e-af44-4b0b-b725-d9ec6a989b32",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "5629d111-eda6-4f33-9821-9c8f8cdfd50d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1792,
+      "height": 1024,
+      "rawWidth": 1792,
+      "rawHeight": 1024,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

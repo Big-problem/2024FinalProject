@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "ef08d96d-ce6b-47f9-ae6f-1c8cdea1eaa2",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1792,
+  "height": 1024,
+  "platformSettings": {},
+  "subMetas": {
+    "Village Tavern 1": {
+      "ver": "1.0.6",
+      "uuid": "f0075261-d1d5-4302-83cd-33c98f13bb88",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "ef08d96d-ce6b-47f9-ae6f-1c8cdea1eaa2",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1792,
+      "height": 1024,
+      "rawWidth": 1792,
+      "rawHeight": 1024,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
