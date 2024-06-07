@@ -513,7 +513,7 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
+      "r": 50,
       "g": 255,
       "b": 255,
       "a": 255
@@ -591,9 +591,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
+      "r": 50,
       "g": 255,
-      "b": 255,
+      "b": 50,
       "a": 255
     },
     "_contentSize": {
@@ -1485,9 +1485,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
+      "r": 50,
       "g": 255,
-      "b": 255,
+      "b": 50,
       "a": 255
     },
     "_contentSize": {
@@ -2083,9 +2083,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 102,
+      "g": 236,
+      "b": 76,
       "a": 255
     },
     "_contentSize": {
@@ -2152,9 +2152,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
+      "r": 50,
       "g": 255,
-      "b": 255,
+      "b": 50,
       "a": 255
     },
     "_contentSize": {
@@ -2278,8 +2278,10 @@
     "_fontSize": 30,
     "_lineHeight": 40,
     "_enableWrapText": false,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "d6d3c8ea-4545-453c-b31f-7656cf56f78c"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 0,

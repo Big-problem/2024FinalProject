@@ -274,8 +274,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 736,
-      "height": 414
+      "width": 960,
+      "height": 640
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -293,8 +293,8 @@
         0,
         0,
         1,
-        1.75,
-        1.75,
+        1,
+        1,
         1
       ]
     },
@@ -327,10 +327,10 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "43e24172-e0e0-46f8-8d66-818d72eb332b"
+      "__uuid__": "09427017-8785-4211-8173-5ba97e6e1ca6"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -442,7 +442,7 @@
       "ctor": "Float64Array",
       "array": [
         480,
-        128,
+        200,
         0,
         0,
         0,
@@ -560,7 +560,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 200,
       "height": 40
     },
     "_anchorPoint": {
@@ -573,7 +573,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        0,
+        10,
         0,
         0,
         0,
@@ -614,11 +614,13 @@
     "_dstBlendFactor": 771,
     "_string": "You lose",
     "_N$string": "You lose",
-    "_fontSize": 20,
+    "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": false,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "d6d3c8ea-4545-453c-b31f-7656cf56f78c"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 0,
@@ -646,7 +648,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "f0048c10-f03e-4c97-b9d3-3506e1d58952"
+      "__uuid__": "21230a14-9d11-45a2-9e5c-d1a72efa29f6"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -753,19 +755,19 @@
       "a": 200
     },
     "_N$normalSprite": {
-      "__uuid__": "f0048c10-f03e-4c97-b9d3-3506e1d58952"
+      "__uuid__": "21230a14-9d11-45a2-9e5c-d1a72efa29f6"
     },
     "_N$pressedSprite": {
-      "__uuid__": "e9ec654c-97a2-4787-9325-e6a10375219a"
+      "__uuid__": "dc86c7df-e57e-4614-8f66-716affc8b54d"
     },
     "pressedSprite": {
-      "__uuid__": "e9ec654c-97a2-4787-9325-e6a10375219a"
+      "__uuid__": "dc86c7df-e57e-4614-8f66-716affc8b54d"
     },
     "_N$hoverSprite": {
-      "__uuid__": "f0048c10-f03e-4c97-b9d3-3506e1d58952"
+      "__uuid__": "dc86c7df-e57e-4614-8f66-716affc8b54d"
     },
     "hoverSprite": {
-      "__uuid__": "f0048c10-f03e-4c97-b9d3-3506e1d58952"
+      "__uuid__": "dc86c7df-e57e-4614-8f66-716affc8b54d"
     },
     "_N$disabledSprite": {
       "__uuid__": "29158224-f8dd-4661-a796-1ffab537140e"
