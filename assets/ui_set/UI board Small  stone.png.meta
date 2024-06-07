@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c0c8f86e-8ac7-410d-b84c-97afdee794c4",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 723,
+  "height": 291,
+  "platformSettings": {},
+  "subMetas": {
+    "UI board Small  stone": {
+      "ver": "1.0.6",
+      "uuid": "bf1338e5-bc3a-44f9-aec2-ce9b30ffbc61",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c0c8f86e-8ac7-410d-b84c-97afdee794c4",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 721,
+      "height": 289,
+      "rawWidth": 723,
+      "rawHeight": 291,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
