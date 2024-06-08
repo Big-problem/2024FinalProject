@@ -95,7 +95,7 @@ export default class FireWizard extends cc.Component {
     }
 
     attack() { // Animation Event
-        let res = cc.director.getPhysicsManager().rayCast(cc.v2(this.node.x, this.node.y), cc.v2(this.node.x+this.attackRange, this.node.y), cc.RayCastType.All);
+        let res = cc.director.getPhysicsManager().rayCast(cc.v2(this.node.x, this.node.y), cc.v2(this.node.x-this.attackRange, this.node.y), cc.RayCastType.All);
         if(this.attackProperty === 'single'){ // 單體攻擊
             let target: cc. Node = null;
             for(let enemy of res){
