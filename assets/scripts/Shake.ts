@@ -5,6 +5,10 @@ export default class Shake extends cc.Component
 {
     @property(cc.Node)
     target:cc.Node=null;
+    @property(cc.AudioClip)
+    shakeAudio:cc.AudioClip=null;
+
+
     // private shake_effect:cc.Action=null;
     private init_x:number=0;
     private init_y:number=0;
@@ -62,6 +66,7 @@ export default class Shake extends cc.Component
         this.init_x=this.target.x;
         this.init_y=this.target.y;
         this.playing=true;
+        cc.audioEngine.playEffect(this.shakeAudio,false);
     }
     // update (dt) {}
 }

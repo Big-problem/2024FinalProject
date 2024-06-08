@@ -19,6 +19,9 @@ export default class FireWizard extends cc.Component {
     @property(cc.AudioClip)
     attackAudio: cc.AudioClip = null;
 
+    @property(cc.AudioClip)
+    blastAudio: cc.AudioClip = null;
+
     speedX: number = -80;
     state: State = State.Move;
 
@@ -117,6 +120,10 @@ export default class FireWizard extends cc.Component {
 
     playAttackAudio(){ // Animation Event
         cc.audioEngine.playEffect(this.attackAudio, false);
+    }
+
+    playBlasterAudio(){ // Animation Event
+        cc.audioEngine.playEffect(this.blastAudio, false);
     }
 
     disappear() { // Animation Event
