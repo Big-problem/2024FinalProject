@@ -118,4 +118,8 @@ export default class FireWizard extends cc.Component {
     playAttackAudio(){ // Animation Event
         cc.audioEngine.playEffect(this.attackAudio, false);
     }
+
+    disappear() { // Animation Event
+        this.node.destroy();
+    }
 }
