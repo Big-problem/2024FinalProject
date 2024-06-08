@@ -17,6 +17,10 @@ export default class GameManager extends cc.Component {
     kunoichiEnemy: cc.Prefab = null;
     @property(cc.Prefab)
     kunoichi: cc.Prefab = null;
+    @property(cc.Prefab)
+    fireWizard: cc.Prefab = null;
+    @property(cc.Prefab)
+    fireWizardEnemy: cc.Prefab = null;
 
     @property(cc.SpriteFrame)
     level1Sprite: cc.SpriteFrame = null;
@@ -33,6 +37,8 @@ export default class GameManager extends cc.Component {
     HeavyBanditBtn: cc.Button = null;
     @property(cc.Button)
     KunoichiBtn: cc.Button = null;
+    @property(cc.Button)
+    fireWizardBtn: cc.Button = null;
     @property(cc.Button)
     levelUpBtn: cc.Button = null;
 
@@ -73,13 +79,17 @@ export default class GameManager extends cc.Component {
 
     heavyBanditCost: number = 10;
     kunoichiCost: number = 20;
+    fireWizardCost: number = 25;
 
     isHeavyBanditCoolDown: boolean = false;
     isKunoichiCoolDown: boolean = false;
+    isFireWizardCoolDown: boolean = false;
     heavyBanditCoolDownTime: number = 0;
     kunoichiCoolDownTime: number = 0;
+    fireWizardCoolDownTime: number = 0;
     heavyBanditCoolDownDuration: number = 2;
     kunoichiCoolDownDuration: number = 4;
+    fireWizardCoolDownDuration: number = 3;
 
     gameStart: boolean = false;
     alliance_arr: cc.Node[] = [];
@@ -213,6 +223,11 @@ export default class GameManager extends cc.Component {
                     this.scheduleOnce(() => {
                         this.Kunoichi(index);
                     }, ((time+500)-Date.now())/1000);
+                }
+                else if(id === 3){
+                    this.scheduleOnce(() => {
+                        this.FireWizard(index);
+                    }, ((time+500)-Date.now())/1000);
                 } 
             }
             else if(mode === 'genEnemy'){
@@ -226,6 +241,11 @@ export default class GameManager extends cc.Component {
                         this.KunoichiEnemy(index);
                     }, ((time+500)-Date.now())/1000);
                 } 
+                else if(id === 3){
+                    this.scheduleOnce(() => {
+                        this.FireWizardEnemy(index);
+                    }, ((time+500)-Date.now())/1000);
+                }
             }
             //}
             
@@ -238,6 +258,7 @@ export default class GameManager extends cc.Component {
             cc.find('ColorBlack').active = false;
             cc.find('Canvas/Main Camera/heavyBanditBtn').active = true;
             cc.find('Canvas/Main Camera/kunoichiBtn').active = true;
+            cc.find('Canvas/Main Camera/fireWizardBtn').active = true;
             cc.find('Canvas/Main Camera/levelUpBtn').active = true;
             cc.find('Canvas/Main Camera/background').active = true;
             cc.find('Canvas/Main Camera/Navbar').active = true;
@@ -359,6 +380,11 @@ export default class GameManager extends cc.Component {
                     this.scheduleOnce(() => {
                         this.KunoichiEnemy(index);
                     }, ((time+500)-Date.now())/1000);
+                }
+                else if(id === 3){
+                    this.scheduleOnce(() => {
+                        this.FireWizardEnemy(index);
+                    }, ((time+500)-Date.now())/1000);
                 } 
             }
             else if(mode === 'genEnemy'){
@@ -370,6 +396,11 @@ export default class GameManager extends cc.Component {
                 else if(id === 2){
                     this.scheduleOnce(() => {
                         this.Kunoichi(index);
+                    }, ((time+500)-Date.now())/1000);
+                } 
+                else if(id === 3){
+                    this.scheduleOnce(() => {
+                        this.FireWizard(index);
                     }, ((time+500)-Date.now())/1000);
                 } 
             }
@@ -387,6 +418,7 @@ export default class GameManager extends cc.Component {
                cc.find('ColorBlack').active = false;
                cc.find('Canvas/Main Camera/heavyBanditBtn').active = true;
                 cc.find('Canvas/Main Camera/kunoichiBtn').active = true;
+                cc.find('Canvas/Main Camera/fireWizardBtn').active = true;
                 cc.find('Canvas/Main Camera/levelUpBtn').active = true;
                 cc.find('Canvas/Main Camera/background').active = true;
                 cc.find('Canvas/Main Camera/Navbar').active = true;
@@ -523,6 +555,9 @@ export default class GameManager extends cc.Component {
             let kunoichiCostString = "$" + String(this.kunoichiCost);
             cc.find('Canvas/Main Camera/kunoichiBtn/Background/Label').getComponent(cc.Label).string = kunoichiCostString;
 
+            let fireWizardCostString = "$" + String(this.fireWizardCost);
+            cc.find('Canvas/Main Camera/fireWizardBtn/Background/Label').getComponent(cc.Label).string = fireWizardCostString;
+
             let expFillRange = this.currentExp / this.expNeedForEachLevel[this.level - 1];
             cc.find('Canvas/Main Camera/levelProgressBar').getComponent(cc.Sprite).fillRange = expFillRange;
 
@@ -546,6 +581,7 @@ export default class GameManager extends cc.Component {
 
             this.HeavyBanditBtn.interactable = this.money >= this.heavyBanditCost && !this.isHeavyBanditCoolDown;
             this.KunoichiBtn.interactable = this.money >= this.kunoichiCost && !this.isKunoichiCoolDown;
+            this.fireWizardBtn.interactable = this.money >= this.fireWizardCost;
             this.levelUpBtn.interactable = this.money >= this.costForExp;
 
             if(!this.invincible){
@@ -640,6 +676,29 @@ export default class GameManager extends cc.Component {
         cc.find('Canvas/Main Camera/kunoichiBtn/Background/cdBarBg').active = true;
     }
 
+    async clickFireWizardBtn() {
+        if (this.money < this.fireWizardCost) return;
+        if(this.invincible){
+            await firebase.database().ref('Rooms/' + this.roomId + '/' + this.rivalId).push({
+                minion: 3,
+                timeStamp: Date.now(),
+                index: this.index,
+                mode: 'genEnemy'
+            });
+        }
+        else{
+            await firebase.database().ref('Rooms/' + this.roomId + '/' + this.user.uid).push({
+                minion: 3,
+                timeStamp: Date.now(),
+                index: this.index,
+                mode: 'gen'
+            });
+        }
+
+        this.index += this.index > 0 ? 1 : -1;
+        this.money -= this.fireWizardCost;
+    }
+
     HeavyBandit(index: number) {
         let tmp = cc.instantiate(this.heavyBandit);
         tmp.setParent(cc.director.getScene());
@@ -677,6 +736,26 @@ export default class GameManager extends cc.Component {
         tmp.getComponent(Info).index= index;
 
         this.alliance_arr.push(tmp);
+    }
+
+    FireWizard(index: number) {
+        let tmp = cc.instantiate(this.fireWizard);
+        tmp.setParent(cc.director.getScene());
+        tmp.x = this.base.x-(this.base.width>>1)-40;
+        tmp.y = 145;
+        tmp.getComponent(Info).index= index;
+
+        this.alliance_arr.push(tmp);
+    }
+
+    FireWizardEnemy(index: number) {
+        let tmp = cc.instantiate(this.fireWizardEnemy);
+        tmp.setParent(cc.director.getScene());
+        tmp.x = this.enemy_base.x+(this.enemy_base.width>>1)+40;
+        tmp.y = 145;
+        tmp.getComponent(Info).index= index;
+
+        this.enemy_arr.push(tmp);
     }
 
     SoManyBlood(){
