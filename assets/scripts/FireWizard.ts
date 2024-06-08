@@ -22,7 +22,7 @@ export default class FireWizard extends cc.Component {
     speedX: number = -80;
     state: State = State.Move;
 
-    attackRange: number = 500;
+    attackRange: number = 450;
     damage: number = 50;
     attackGap: number = 5;
 
@@ -32,6 +32,7 @@ export default class FireWizard extends cc.Component {
 
     start () {
         this.node.getComponent(Info).life = 50;
+        this.node.getComponent(Info).dieFrame = null; // 有死亡動畫
         this.getComponent(cc.Animation).play('move');
         this.gameManager = cc.find('GameManager').getComponent(GameManager);
     }
