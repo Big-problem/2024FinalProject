@@ -22,7 +22,7 @@ export default class FireWizard extends cc.Component {
     speedX: number = -80;
     state: State = State.Move;
 
-    attackRange: number = 400;
+    attackRange: number = 500;
     damage: number = 50;
     attackGap: number = 5;
 
