@@ -3,7 +3,7 @@
   "_name": "attack",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 0.8333333333333334,
+  "_duration": 2.683333333333333,
   "sample": 60,
   "speed": 1,
   "wrapMode": 2,
@@ -58,10 +58,172 @@
             "value": {
               "__uuid__": "2830af03-a292-4f81-bfd7-a7a53c41df8d"
             }
+          },
+          {
+            "frame": 0.9333333333333333,
+            "value": {
+              "__uuid__": "9e5957c1-e42c-4bbf-8d15-4b6e6d3f37ce"
+            }
+          },
+          {
+            "frame": 1.05,
+            "value": {
+              "__uuid__": "087229ef-3c0f-43aa-9ccd-74af7bb84a78"
+            }
+          },
+          {
+            "frame": 1.1666666666666667,
+            "value": {
+              "__uuid__": "9346afac-0512-4623-aee3-8520e7783236"
+            }
+          },
+          {
+            "frame": 1.2833333333333334,
+            "value": {
+              "__uuid__": "64807023-63b8-4a7b-86b9-d485973bffb5"
+            }
+          },
+          {
+            "frame": 1.4,
+            "value": {
+              "__uuid__": "d8c2b4ae-19c6-419f-b4a8-ed83d471ebac"
+            }
+          },
+          {
+            "frame": 1.5166666666666666,
+            "value": {
+              "__uuid__": "cf681258-f764-4473-a3be-096344a5481d"
+            }
+          },
+          {
+            "frame": 1.6333333333333333,
+            "value": {
+              "__uuid__": "d5dbb41b-f179-4523-b071-6fbeed9581e0"
+            }
+          },
+          {
+            "frame": 1.75,
+            "value": {
+              "__uuid__": "9e5957c1-e42c-4bbf-8d15-4b6e6d3f37ce"
+            }
+          },
+          {
+            "frame": 1.8666666666666667,
+            "value": {
+              "__uuid__": "087229ef-3c0f-43aa-9ccd-74af7bb84a78"
+            }
+          },
+          {
+            "frame": 1.9833333333333334,
+            "value": {
+              "__uuid__": "9346afac-0512-4623-aee3-8520e7783236"
+            }
+          },
+          {
+            "frame": 2.1,
+            "value": {
+              "__uuid__": "64807023-63b8-4a7b-86b9-d485973bffb5"
+            }
+          },
+          {
+            "frame": 2.216666666666667,
+            "value": {
+              "__uuid__": "d8c2b4ae-19c6-419f-b4a8-ed83d471ebac"
+            }
+          },
+          {
+            "frame": 2.3333333333333335,
+            "value": {
+              "__uuid__": "cf681258-f764-4473-a3be-096344a5481d"
+            }
+          },
+          {
+            "frame": 2.45,
+            "value": {
+              "__uuid__": "d5dbb41b-f179-4523-b071-6fbeed9581e0"
+            }
           }
         ]
       }
+    },
+    "paths": {
+      "fireball/rocketfire": {
+        "props": {
+          "active": [
+            {
+              "frame": 0.8166666666666667,
+              "value": true
+            }
+          ]
+        }
+      },
+      "fireaball/rocketfire": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 0.65,
+              "value": true
+            },
+            {
+              "frame": 1.5,
+              "value": false
+            }
+          ]
+        }
+      },
+      "fireaball": {
+        "props": {
+          "x": [
+            {
+              "frame": 0.65,
+              "value": 40
+            },
+            {
+              "frame": 1.5,
+              "value": 440
+            }
+          ]
+        }
+      },
+      "fireaball/explosion": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 1.5,
+              "value": true
+            },
+            {
+              "frame": 2.683333333333333,
+              "value": false
+            }
+          ]
+        }
+      }
     }
   },
-  "events": []
+  "events": [
+    {
+      "frame": 0.7,
+      "func": "",
+      "params": []
+    },
+    {
+      "frame": 1.5,
+      "func": "attack",
+      "params": []
+    },
+    {
+      "frame": 2.683333333333333,
+      "func": "combatdle",
+      "params": []
+    }
+  ]
 }

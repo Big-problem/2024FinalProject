@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "FireWizardEnemy",
+    "_name": "FireWizard",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -74,7 +74,7 @@
         0,
         0,
         1,
-        1,
+        -1,
         1,
         1
       ]
@@ -326,7 +326,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 11.2,
+    "constant": 14.3,
     "multiplier": 1
   },
   {
@@ -907,20 +907,6 @@
     "_id": ""
   },
   {
-    "__type__": "e8509dvSPVBRb33juNz+W1/",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "gameManager": null,
-    "attackAudio": {
-      "__uuid__": "3564caa4-df04-45a7-80d9-d094589e31e0"
-    },
-    "_id": ""
-  },
-  {
     "__type__": "892e9jA+f1IF4d/tPd+nFZR",
     "_name": "",
     "_objFlags": 0,
@@ -932,6 +918,20 @@
       "__uuid__": "4ab2adf2-1a73-49d1-b769-2105e095c345"
     },
     "gameManager": null,
+    "_id": ""
+  },
+  {
+    "__type__": "e8176Bq87JK6rzhH6lt38Rc",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "gameManager": null,
+    "attackAudio": {
+      "__uuid__": "3564caa4-df04-45a7-80d9-d094589e31e0"
+    },
     "_id": ""
   },
   {

@@ -1,6 +1,6 @@
 {
   "__type__": "cc.Material",
-  "_name": "New Material",
+  "_name": "explosion",
   "_objFlags": 0,
   "_native": "",
   "_effectAsset": {
@@ -9,12 +9,12 @@
   "_techniqueIndex": 0,
   "_techniqueData": {
     "0": {
-      "defines": {},
       "props": {
         "mainTexture": {
           "__uuid__": "e5a1786e-3341-470a-aa8c-9c739e0fc85f"
         }
-      }
+      },
+      "defines": {}
     }
   }
 }
