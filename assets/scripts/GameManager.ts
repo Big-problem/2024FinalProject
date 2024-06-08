@@ -79,7 +79,7 @@ export default class GameManager extends cc.Component {
 
     heavyBanditCost: number = 10;
     kunoichiCost: number = 20;
-    fireWizardCost: number = 25;
+    fireWizardCost: number = 40;
 
     isHeavyBanditCoolDown: boolean = false;
     isKunoichiCoolDown: boolean = false;

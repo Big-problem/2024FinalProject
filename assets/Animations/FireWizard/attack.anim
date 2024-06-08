@@ -212,7 +212,7 @@
   "events": [
     {
       "frame": 0.7,
-      "func": "",
+      "func": "playAttackAudio",
       "params": []
     },
     {
