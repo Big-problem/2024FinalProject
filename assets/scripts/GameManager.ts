@@ -594,7 +594,7 @@ export default class GameManager extends cc.Component {
 
             this.HeavyBanditBtn.interactable = this.money >= this.heavyBanditCost && !this.isHeavyBanditCoolDown;
             this.KunoichiBtn.interactable = this.money >= this.kunoichiCost && !this.isKunoichiCoolDown;
-            this.fireWizardBtn.interactable = this.money >= this.fireWizardCost;
+            this.fireWizardBtn.interactable = this.money >= this.fireWizardCost && !this.isFireWizardCoolDown;
             this.levelUpBtn.interactable = this.money >= this.costForExp;
 
             if(!this.invincible){
@@ -710,6 +710,12 @@ export default class GameManager extends cc.Component {
 
         this.index += this.index > 0 ? 1 : -1;
         this.money -= this.fireWizardCost;
+
+        this.fireWizardBtn.interactable = false;
+        this.isFireWizardCoolDown = true;
+        this.fireWizardCoolDownTime = 0;
+        cc.find('Canvas/Main Camera/fireWizardBtn/Background/cdBar').active = true;
+        cc.find('Canvas/Main Camera/fireWizardBtn/Background/cdBarBg').active = true;
     }
 
     HeavyBandit(index: number) {
