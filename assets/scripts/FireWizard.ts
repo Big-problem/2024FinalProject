@@ -45,7 +45,7 @@ export default class FireWizard extends cc.Component {
         // }
 
         if(this.state === State.Move) {
-            let res = cc.director.getPhysicsManager().rayCast(cc.v2(this.node.x, this.node.y), cc.v2(this.node.x+this.attackRange, this.node.y), cc.RayCastType.All);
+            let res = cc.director.getPhysicsManager().rayCast(cc.v2(this.node.x, this.node.y), cc.v2(this.node.x-this.attackRange, this.node.y), cc.RayCastType.All);
             for(let i of res) {
                 if(i.collider.tag === 50){
                     this.changeState(State.Attack);
@@ -54,7 +54,7 @@ export default class FireWizard extends cc.Component {
             }
         }
         if(this.state === State.CombatIdle) {
-            let res = cc.director.getPhysicsManager().rayCast(cc.v2(this.node.x, this.node.y), cc.v2(this.node.x+this.attackRange, this.node.y), cc.RayCastType.All);
+            let res = cc.director.getPhysicsManager().rayCast(cc.v2(this.node.x, this.node.y), cc.v2(this.node.x-this.attackRange, this.node.y), cc.RayCastType.All);
             let flag:number = 1;
             for(let i of res) {
                 if(i.collider.tag === 50){

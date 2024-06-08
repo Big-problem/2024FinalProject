@@ -511,6 +511,7 @@ export default class GameManager extends cc.Component {
         if(this.gameOver){
             this.HeavyBanditBtn.interactable = false;
             this.KunoichiBtn.interactable = false;
+            this.fireWizardBtn.interactable = false;
             this.levelUpBtn.interactable = false;
             return;
         }
@@ -539,6 +540,18 @@ export default class GameManager extends cc.Component {
                     this.KunoichiBtn.interactable = true;
                     cc.find('Canvas/Main Camera/kunoichiBtn/Background/cdBar').active = false;
                     cc.find('Canvas/Main Camera/kunoichiBtn/Background/cdBarBg').active = false;
+                }
+            }
+
+            if (this.isFireWizardCoolDown) {
+                this.fireWizardCoolDownTime += dt;
+                cc.find('Canvas/Main Camera/fireWizardBtn/Background/cdBar').getComponent(cc.Sprite).fillRange = this.fireWizardCoolDownTime / this.fireWizardCoolDownDuration;
+                if (this.fireWizardCoolDownTime >= this.fireWizardCoolDownDuration) {
+                    this.isFireWizardCoolDown = false;
+                    this.fireWizardCoolDownTime = 0;
+                    this.fireWizardBtn.interactable = true;
+                    cc.find('Canvas/Main Camera/fireWizardBtn/Background/cdBar').active = false;
+                    cc.find('Canvas/Main Camera/fireWizardBtn/Background/cdBarBg').active = false;
                 }
             }
 
