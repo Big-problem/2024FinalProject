@@ -78,7 +78,7 @@ export default class FireWizardEnemy extends cc.Component {
         this.state = state;
         this.getComponent(cc.Animation).stop();
         if(state === State.Move) this.getComponent(cc.Animation).play('move');
-        if(state === State.CombatIdle) this.getComponent(cc.Animation).play('combatIdle');
+        if(state === State.CombatIdle) this.getComponent(cc.Animation).play('idle');
         if(state === State.Attack) {
             if(this.attackReady){
                 this.getComponent(cc.Animation).play('attack');
