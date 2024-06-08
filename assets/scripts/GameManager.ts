@@ -171,7 +171,10 @@ export default class GameManager extends cc.Component {
                         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP);
                         // stop bgm
                         cc.audioEngine.stopMusic();
-                        this.camera.x = 760;
+                        this.getComponent(Shake).stop = true;
+                        this.scheduleOnce(() => {
+                            this.camera.x = 760;
+                        }, 0.6);
                         this.base.getComponent(cc.Animation).play('explode');
                         this.scheduleOnce(() => {
                             cc.director.loadScene('Lose');
@@ -187,7 +190,10 @@ export default class GameManager extends cc.Component {
                         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP);
                         // stop bgm
                         cc.audioEngine.stopMusic();
-                        this.camera.x = -750;
+                        this.getComponent(Shake).stop = true;
+                        this.scheduleOnce(() => {
+                            this.camera.x = -750;
+                        }, 0.6);
                         this.enemy_base.getComponent(cc.Animation).play('explode');
                         this.scheduleOnce(() => {
                             cc.director.loadScene('win');
@@ -327,7 +333,10 @@ export default class GameManager extends cc.Component {
                         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP);
                         // stop bgm
                         cc.audioEngine.stopMusic();
-                        this.camera.x = -750;
+                        this.getComponent(Shake).stop = true;
+                        this.scheduleOnce(() => {
+                            this.camera.x = -750;
+                        }, 0.6);
                         this.enemy_base.getComponent(cc.Animation).play('explode');
                         this.scheduleOnce(() => {
                             cc.director.loadScene('win');
@@ -342,7 +351,10 @@ export default class GameManager extends cc.Component {
                         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP);
                         // stop bgm
                         cc.audioEngine.stopMusic();
-                        this.camera.x = 760;
+                        this.getComponent(Shake).stop = true;
+                        this.scheduleOnce(() => {
+                            this.camera.x = 760;
+                        }, 0.6);
                         this.base.getComponent(cc.Animation).play('explode');
                         this.scheduleOnce(() => {
                             cc.director.loadScene('Lose');

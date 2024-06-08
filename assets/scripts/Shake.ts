@@ -14,6 +14,7 @@ export default class Shake extends cc.Component
     private max_time:number=0.5;
     private acc_time:number=0;
     private playing:boolean=false;
+    stop:boolean=false;
     // private target:cc.Node=null;
     
     // LIFE-CYCLE CALLBACKS:
@@ -36,6 +37,7 @@ export default class Shake extends cc.Component
     update(dt)
     {
         if(!this.playing) return;
+        if(this.stop) return;
         if(this.acc_time>=this.max_time)
         {
             this.playing=false;
@@ -56,6 +58,7 @@ export default class Shake extends cc.Component
     {
         // cc.find("Canvas/Main Camera").runAction(this.shake_effect);
         if(this.playing) return;
+        if(this.stop) return;        
         this.init_x=this.target.x;
         this.init_y=this.target.y;
         this.playing=true;
